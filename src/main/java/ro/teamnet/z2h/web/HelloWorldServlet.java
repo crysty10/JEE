@@ -23,8 +23,10 @@ import java.io.IOException;
 public class HelloWorldServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String att = (String)req.getAttribute("testAttribute");
         resp.setContentType("text/html");
-        resp.getWriter().write("Hello <b>"+req.getParameter("user")+"</b>");
+        resp.getWriter().write("Hello <b>"+req.getParameter("firstName")+ " " + req.getParameter("lastName")+
+            "</b> from the Forward Servlet " + att + "!");
     }
 
     @Override
